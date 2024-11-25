@@ -4,14 +4,15 @@ package br.com.jamazonasa;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Class<?> clazz = Cliente.class;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        if(clazz.isAnnotationPresent(Tabela.class)) {
+            Tabela tabela = clazz.getAnnotation(Tabela.class);
+
+            System.out.println("Nome da Tabela: " + tabela.valor());
+        } else {
+            System.out.println("A classe" + clazz.getSimpleName() + "não se encontra na annotation @Tabela");
         }
+
     }
 }
